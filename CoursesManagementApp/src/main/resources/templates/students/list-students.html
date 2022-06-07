@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    
+    <!-- Set the Character set for the page -->
+    <meta charset="utf-8">
+    
+    <!-- Let the page adapt to client device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Link to external resource (css, search, etc.) -->
+    <!-- Link to Bootstrap CSS in this case -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Students</title>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h3>Courses Management App</h3>
+	<hr>
+	
+	<a th:href="@{/courses/students/showFormForAddStudent(courseId=${param.courseId[0]})}"
+		class="btn btn-outline-primary">
+		Add Student
+	</a>
+	
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Name</th>
+				<th>Year of Registration</th>
+				<th>Semester</th>
+				<th>Project</th>
+				<th>Exam</th>
+				<th>Total</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempStudent : ${students}">
+			
+				<td th:text="${tempStudent.name}" />	
+				<td th:text="${tempStudent.year_of_registration}" />	
+				<td th:text="${tempStudent.semester}" />
+				<td th:text="${tempStudent.project}" />
+				<td th:text="${tempStudent.exam}" />
+				<td th:text="${tempStudent.grade}" />	
+				
+				<td>
+					<a th:href="@{/courses/students/showFormForUpdate(studentId=${tempStudent.student_id}, courseId=${param.courseId[0]})}"
+					   class="btn btn-outline-success">
+						Update / Add Grades
+					</a>
+									
+					<a th:href="@{/courses/students/delete(studentId=${tempStudent.student_id}, courseId=${param.courseId[0]})}"
+					   class="btn btn-outline-danger" 
+					   onclick="if (!(confirm('Are you sure you want to delete the student?'))) return false">
+						Delete
+					</a>
+					
+				</td>
+			</tr>
+		</tbody>		
+	</table>
+	
+	<a th:href="@{/courses/showStatistics(courseId=${param.courseId[0]})}"
+		class="btn btn-outline-secondary">
+		Show Course Statistics
+	</a>
+	
+	<hr>
+	<a th:href="@{/courses/list}">Back to Courses List</a>
+	
+</div>
+	
+</body>
+</html>

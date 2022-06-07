@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    
+    <!-- Set the Character set for the page -->
+    <meta charset="utf-8">
+    
+    <!-- Let the page adapt to client device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Link to external resource (css, search, etc.) -->
+    <!-- Link to Bootstrap CSS in this case -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Course Statistics</title>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h3>Courses Management App</h3>
+	<hr>
+	
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Statistic</th>
+				<th>Strategy</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempStat : ${statistics}">
+			
+				<td th:text="${tempStat.key}" />	
+				<td th:text="${tempStat.value}" />		
+
+			</tr>
+		</tbody>		
+	</table>
+	
+	<hr>
+	<a th:href="@{/courses/students/list(courseId=${param.courseId[0]})}">Back to Students List</a>
+	
+</div>
+	
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Save Student</title>
+</head>
+
+<body>
+	
+	<div class="container">
+	
+		<h3>Courses Management App</h3>
+		<hr>
+		
+		<p class="h4 mb-4">Save Student </p>
+	
+		<form th:action="@{/courses/students/save(courseId=${param.courseId[0]})}"
+						 th:object="${student}" method="POST">
+		
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{student_id}" />
+			
+			<label class="col-sm-2 col-form-label">Student Name</label>
+			<input type="text" th:field="*{name}"
+					class="form-control mb-4 col-4" placeholder="Enter Student name">
+			
+			<label class="col-sm-2 col-form-label">Year of Registration</label>
+			<input type="text" th:field="*{year_of_registration}"
+					class="form-control mb-4 col-4" placeholder="Enter Year of Registration">
+			
+			<label class="col-sm-2 col-form-label">Semester</label>
+			<input type="text" th:field="*{semester}"
+					class="form-control mb-4 col-4" placeholder="Enter Semester">
+			
+			<label class="col-sm-2 col-form-label">Project Grade</label>
+			<input type="text" th:field="*{project}"
+					class="form-control mb-4 col-4" placeholder="Enter Project Grade">
+			
+			<label class="col-sm-2 col-form-label">Exam Grade</label>		
+			<input type="text" th:field="*{exam}"
+					class="form-control mb-4 col-4" placeholder="Enter Exam Grade">
+				
+			<button type="submit" class="btn btn-info col-2">Save</button>
+						
+		</form>
+	
+		<hr>
+		<a th:href="@{/courses/students/list(courseId=${param.courseId[0]})}">Back to Students List</a>
+		
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    
+    <!-- Set the Character set for the page -->
+    <meta charset="utf-8">
+    
+    <!-- Let the page adapt to client device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Link to external resource (css, search, etc.) -->
+    <!-- Link to Bootstrap CSS in this case -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Login</title>
+</head>
+
+<body>
+	
+	<div class="container">
+	
+		<h3>Courses Management App</h3>
+		<hr>
+		
+		<form th:action="@{/courses/login/save}" th:object="${course}" method="post">
+   			<input type="text" th:field="*{instructor}"
+					class="form-control mb-4 col-4" placeholder="UserName (Instructor)">
+   			<button type="submit">Login</button>
+		</form>
+		
+		<hr>
+		
+	</div>
+</body>
+
+</html>
